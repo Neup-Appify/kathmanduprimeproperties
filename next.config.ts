@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Serve the app from a sub-path when deployed behind a base path
+  basePath: '/ktmpp',
+  // Ensure static assets are served from the same base path
+  assetPrefix: '/ktmpp',
 };
 
 export default nextConfig;
