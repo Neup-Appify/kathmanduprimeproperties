@@ -2,7 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/data/site";
 
-const LOGO_SRC = "https://neupgroup.com/ktmpp/logo.png";
+const LOGO_SRC =
+  "https://neupgroup.com/niwas/_next/image?url=https%3A%2F%2Fneupgroup.com%2Fniwas%2Flogo.jpeg&w=3840&q=75";
 
 export function SiteHeader() {
   return (
