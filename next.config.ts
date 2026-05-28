@@ -5,6 +5,14 @@ const nextConfig: NextConfig = {
   basePath: '/ktmpp',
   // Ensure static assets are served from the same base path
   assetPrefix: '/ktmpp',
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "neupgroup.com",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { navLinks } from "@/data/site";
 
-const LOGO_SRC = "/ktmpp/logo.png";
+const LOGO_SRC = "https://neupgroup.com/ktmpp/logo.png";
 
 export function SiteHeader() {
   return (
