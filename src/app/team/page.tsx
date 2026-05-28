@@ -17,8 +17,7 @@ export default function TeamPage() {
           The people shaping every property conversation.
         </h1>
         <p className="text-lg leading-8 text-[color:var(--muted)]">
-          A small, focused team keeps the work personal. Each person is aligned
-          around presentation, communication, and a clean client experience.
+          A focused team delivering clear advice, polished listings, and steady execution.
         </p>
       </section>
 
@@ -26,7 +25,7 @@ export default function TeamPage() {
         {teamMembers.map((member) => (
           <article
             key={member.name}
-            className="rounded-[1.8rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-6 shadow-sm"
+            className="rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-6 shadow-sm"
           >
             <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[color:var(--primary-soft)] font-display text-xl text-[color:var(--primary)]">
               {member.name
@@ -34,7 +33,7 @@ export default function TeamPage() {
                 .map((part) => part[0])
                 .join("")}
             </div>
-            <h2 className="mt-5 font-display text-3xl text-[color:var(--foreground)]">
+            <h2 className="mt-5 font-display text-[2rem] leading-9 text-[color:var(--foreground)]">
               {member.name}
             </h2>
             <p className="mt-2 text-sm font-semibold uppercase tracking-[0.18em] text-[color:var(--primary)]">

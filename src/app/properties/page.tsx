@@ -25,9 +25,9 @@ export default function PropertiesPage() {
         {featuredProperties.map((property) => (
           <article
             key={property.name}
-            className="overflow-hidden rounded-[1.8rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] shadow-sm"
+            className="overflow-hidden rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] shadow-sm"
           >
-            <div className="border-b border-[color:var(--border)] bg-[linear-gradient(160deg,rgba(198,30,58,0.16),rgba(255,255,255,1))] p-5">
+            <div className="border-b border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(110,31,45,0.1),rgba(255,255,255,1))] p-5">
               <div className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--primary)]">
                 {property.type}
               </div>
@@ -55,14 +55,14 @@ export default function PropertiesPage() {
         ))}
       </section>
 
-      <section className="mt-16 rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm lg:p-8">
+      <section className="mt-16 rounded-[1.25rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm lg:p-8">
         <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[color:var(--primary)]">
               Buying and selling flow
             </p>
             <h2 className="mt-3 font-display text-4xl tracking-tight text-[color:var(--foreground)]">
-              A tighter process behind every listing.
+              Structured process, cleaner outcomes.
             </h2>
           </div>
           <div className="grid gap-4 md:grid-cols-3">

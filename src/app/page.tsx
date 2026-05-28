@@ -24,20 +24,19 @@ export default function Home() {
           </div>
           <div className="space-y-5">
             <h1 className="max-w-3xl font-display text-5xl leading-none tracking-tight text-[color:var(--foreground)] sm:text-6xl lg:text-7xl">
-              Sell and buy property with a modern, calm, and credible real
-              estate team.
+              Classic trust.
+              <br />
+              Neo-modern property advisory.
             </h1>
             <p className="max-w-2xl text-lg leading-8 text-[color:var(--muted)] sm:text-xl">
-              Kathmandu Prime Properties positions every listing to look sharp,
-              feel premium, and move fast. We package homes for the market, guide
-              serious buyers, and keep the process clean from first tour to final
-              handover.
+              We position each listing with clear pricing, refined presentation,
+              and direct communication from first visit to final handover.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
             <Link
               href="/properties"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-[color:var(--primary)] px-6 text-sm font-semibold text-white shadow-[0_18px_40px_rgba(198,30,58,0.24)] transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--primary-strong)]"
+            className="inline-flex h-12 items-center justify-center rounded-full bg-[color:var(--primary)] px-6 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--primary-strong)]"
             >
               View properties
             </Link>
@@ -66,9 +65,8 @@ export default function Home() {
         </div>
 
         <div className="relative">
-          <div className="absolute -left-4 top-8 h-24 w-24 rounded-full bg-[color:var(--primary-soft)] blur-3xl" />
-          <div className="relative overflow-hidden rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-5 shadow-[0_24px_70px_rgba(23,19,17,0.08)]">
-            <div className="rounded-[1.5rem] border border-[color:var(--border)] bg-[linear-gradient(160deg,rgba(198,30,58,0.14),rgba(255,255,255,1)_42%,rgba(247,240,236,1))] p-6">
+          <div className="relative overflow-hidden rounded-[1.25rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] p-5 shadow-[0_14px_40px_rgba(23,19,17,0.08)]">
+            <div className="rounded-2xl border border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(110,31,45,0.08),rgba(255,255,255,1)_36%)] p-6">
               <div className="flex items-center justify-between gap-4 border-b border-[color:var(--border)] pb-5">
                 <div>
                   <p className="text-sm font-semibold uppercase tracking-[0.22em] text-[color:var(--primary)]">
@@ -111,7 +109,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-16 grid gap-5 rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm backdrop-blur lg:grid-cols-3">
+      <section className="mt-16 grid gap-5 rounded-[1.25rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm lg:grid-cols-3">
         {homeServices.map((service) => (
           <div key={service.title} className="rounded-3xl bg-white/70 p-6">
             <div className="text-sm font-semibold uppercase tracking-[0.22em] text-[color:var(--primary)]">
@@ -133,12 +131,10 @@ export default function Home() {
             Featured properties
           </p>
           <h2 className="font-display text-4xl tracking-tight text-[color:var(--foreground)] sm:text-5xl">
-            A tighter selection, built to sell itself.
+            Focused inventory. Stronger decisions.
           </h2>
           <p className="max-w-xl text-base leading-7 text-[color:var(--muted)]">
-            We keep the list intentional. Each property below is presented like a
-            premium portfolio piece so buyers can understand the opportunity in
-            seconds.
+            Each home is presented with only the details that matter most.
           </p>
           <Link
             href="/properties"
@@ -151,7 +147,7 @@ export default function Home() {
           {featuredProperties.slice(0, 2).map((property) => (
             <article
               key={property.name}
-              className="overflow-hidden rounded-[1.8rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] shadow-sm"
+            className="overflow-hidden rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] shadow-sm"
             >
               <div className="border-b border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(198,30,58,0.16),rgba(255,255,255,1))] p-5">
                 <div className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--primary)]">
@@ -217,18 +213,17 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mt-24 rounded-[2rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm backdrop-blur lg:p-8">
+      <section className="mt-24 rounded-[1.25rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm lg:p-8">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-[color:var(--primary)]">
               Kathmandu neighborhoods
             </p>
             <h2 className="mt-3 font-display text-4xl tracking-tight text-[color:var(--foreground)] sm:text-5xl">
-              Service areas that matter to the Kathmandu market.
+              Service areas with consistent demand.
             </h2>
             <p className="mt-4 text-base leading-7 text-[color:var(--muted)]">
-              We focus on districts where quality presentation and local context
-              make the biggest difference.
+              We focus where presentation and local context have the most impact.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -273,18 +268,17 @@ export default function Home() {
         ))}
       </section>
 
-      <section className="mt-24 rounded-[2rem] bg-[color:var(--primary)] px-6 py-10 text-white shadow-[0_20px_60px_rgba(198,30,58,0.32)] lg:px-10">
+      <section className="mt-24 rounded-[1.25rem] bg-[color:var(--primary)] px-6 py-10 text-white shadow-[0_20px_50px_rgba(110,31,45,0.28)] lg:px-10">
         <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.25em] text-white/70">
               Start with a valuation
             </p>
             <h2 className="mt-3 font-display text-4xl tracking-tight sm:text-5xl">
-              Need a sharper way to present your property?
+              Ready to present your property with confidence?
             </h2>
             <p className="mt-4 max-w-2xl text-white/80">
-              We can help you price, present, and position a home so it appeals
-              to the right buyers in Kathmandu.
+              We help you price, present, and position for the right buyers.
             </p>
           </div>
           <Link

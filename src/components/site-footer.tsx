@@ -1,18 +1,31 @@
+import Image from "next/image";
 import Link from "next/link";
 import { footerLinks, serviceAreas } from "@/data/site";
+
+const LOGO_SRC = "/ktmpp/logo.png";
 
 export function SiteFooter() {
   return (
     <footer className="border-t border-[color:var(--border)] bg-[color:var(--surface)]">
       <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-12 lg:grid-cols-[1.2fr_0.8fr_0.8fr] lg:px-8">
         <div className="space-y-4">
-          <div className="font-display text-2xl text-[color:var(--foreground)]">
-            Kathmandu Prime Properties
+          <div className="flex items-center gap-3">
+            <span className="flex h-14 w-14 items-center justify-center overflow-hidden rounded-xl border border-[color:var(--border)] bg-[color:var(--surface-strong)]">
+              <Image
+                src={LOGO_SRC}
+                alt="Kathmandu Prime Properties logo"
+                width={56}
+                height={56}
+                className="h-12 w-12 object-contain"
+              />
+            </span>
+            <div className="font-display text-3xl text-[color:var(--foreground)]">
+              Kathmandu Prime Properties
+            </div>
           </div>
           <p className="max-w-md text-sm leading-7 text-[color:var(--muted)]">
-            Modern real estate presentation for sellers and buyers across
-            Kathmandu. Minimal by design, focused on trust, clarity, and strong
-            market appeal.
+            Classic trust, modern execution for premium property across the
+            valley.
           </p>
         </div>
 
@@ -52,7 +65,7 @@ export function SiteFooter() {
       <div className="border-t border-[color:var(--border)]">
         <div className="mx-auto flex w-full max-w-7xl flex-col gap-2 px-6 py-4 text-sm text-[color:var(--muted)] lg:flex-row lg:items-center lg:justify-between lg:px-8">
           <span>© 2026 Kathmandu Prime Properties. All rights reserved.</span>
-          <span>Built for a clean, premium Kathmandu property experience.</span>
+          <span>Kathmandu • Lalitpur • Bhaktapur</span>
         </div>
       </div>
     </footer>

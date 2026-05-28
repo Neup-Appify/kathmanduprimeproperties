@@ -14,9 +14,9 @@ export const footerLinks = [
 export const serviceAreas = ["Kathmandu", "Lalitpur", "Bhaktapur"] as const;
 
 export const homeStats = [
-  { value: "120+", label: "Homes positioned" },
+  { value: "120+", label: "Homes advised" },
   { value: "3", label: "Core service areas" },
-  { value: "14 days", label: "Typical launch window" },
+  { value: "14 days", label: "Average launch cycle" },
 ] as const;
 
 export const marketSignals = [
@@ -28,21 +28,18 @@ export const marketSignals = [
 export const homeServices = [
   {
     tag: "Selling",
-    title: "Make the listing market-ready.",
-    description:
-      "We shape the story, photography direction, and pricing strategy so a property looks premium from the first scroll.",
+    title: "List with confidence.",
+    description: "Pricing, visuals, and positioning tailored to buyer intent.",
   },
   {
     tag: "Buying",
-    title: "Shortlist homes worth a visit.",
-    description:
-      "Buyers get clean options, local context, and honest guidance on what stands out in Kathmandu's market.",
+    title: "Buy with clarity.",
+    description: "Curated options, local insight, and direct advisory.",
   },
   {
     tag: "Valuation",
-    title: "Lead with a realistic number.",
-    description:
-      "A credible valuation helps protect time, reduce noise, and attract buyers who are actually ready.",
+    title: "Value with precision.",
+    description: "Evidence-led valuation that protects time and negotiation power.",
   },
 ] as const;
 
@@ -54,7 +51,7 @@ export const featuredProperties = [
     price: "Rs 4.8 Cr",
     highlight: "City-facing balcony",
     description:
-      "A polished three-bedroom home with a calm interior palette, premium finishes, and strong access to central Kathmandu.",
+      "Three-bedroom residence with refined finishes and central access.",
   },
   {
     name: "Buddhanagar family villa",
@@ -63,7 +60,7 @@ export const featuredProperties = [
     price: "Rs 7.2 Cr",
     highlight: "Private garden",
     description:
-      "A spacious family home with a generous layout, natural light, and a setting that balances privacy with convenience.",
+      "Spacious villa balancing privacy, daylight, and city convenience.",
   },
   {
     name: "Jhamsikhel investor flat",
@@ -72,7 +69,7 @@ export const featuredProperties = [
     price: "Rs 3.1 Cr",
     highlight: "High rental demand",
     description:
-      "A compact, high-appeal apartment designed for buyers who want steady rental potential and a central lifestyle base.",
+      "Compact investment flat with strong rental and lifestyle appeal.",
   },
 ] as const;
 
@@ -80,17 +77,17 @@ export const sellingSteps = [
   {
     title: "Discover",
     description:
-      "We assess the home, service area, and market position before we commit to a launch direction.",
+      "We audit the home, micro-market, and buyer fit.",
   },
   {
     title: "Present",
     description:
-      "We refine copy, visuals, and pricing so the listing feels polished, accurate, and easy to trust.",
+      "We shape pricing, visuals, and messaging for launch.",
   },
   {
     title: "Close",
     description:
-      "We manage buyer conversations and negotiation points with a calm, outcome-focused process.",
+      "We negotiate with discipline through to handover.",
   },
 ] as const;
 
@@ -99,25 +96,25 @@ export const neighborhoods = [
     scope: "Central Kathmandu",
     name: "Lazimpat and nearby districts",
     note:
-      "For buyers who value access, executive housing, and strong presentation.",
+      "Executive homes with high access value.",
   },
   {
     scope: "Kathmandu core",
     name: "Buddhanagar and surrounding areas",
     note:
-      "For family homes and properties that need clear, credible positioning.",
+      "Family homes with practical positioning needs.",
   },
   {
     scope: "Valley lifestyle",
     name: "Jhamsikhel and central Lalitpur",
     note:
-      "For buyers who want a mix of convenience, rental appeal, and walkable amenities.",
+      "Walkable districts with rental upside.",
   },
   {
     scope: "City fringe",
     name: "Bhaktapur premium pockets",
     note:
-      "For larger plots and homes that benefit from a quieter setting and careful market framing.",
+      "Larger plots with calmer surroundings.",
   },
 ] as const;
 
@@ -126,32 +123,32 @@ export const testimonials = [
     name: "Anika Shrestha",
     role: "Property seller, Kathmandu",
     quote:
-      "The listing looked sharper, the communication was clean, and the buyer conversations started faster than expected.",
+      "Sharp listing, clear communication, quick buyer response.",
   },
   {
     name: "Rohit Manandhar",
     role: "Investor, Lalitpur",
     quote:
-      "The team was direct about pricing and market fit, which made it much easier to choose the right property.",
+      "Straight advice on pricing made decisions easy.",
   },
   {
     name: "Sita Koirala",
     role: "Homebuyer, Kathmandu",
     quote:
-      "I liked how each home was presented with just enough detail. It felt premium without being overwhelming.",
+      "Premium presentation without unnecessary noise.",
   },
 ] as const;
 
 export const propertiesPageHero = {
-  title: "Properties curated for Kathmandu buyers and sellers.",
+  title: "Curated properties across Kathmandu Valley.",
   description:
-    "Browse a focused set of homes with clear pricing, practical context, and a presentation style that helps each listing stand out.",
+    "Clear pricing, concise context, and refined listing presentation.",
 } as const;
 
 export const aboutHighlights = [
-  "Minimal presentation, stronger trust.",
+  "Classic tone, modern clarity.",
   "Pricing shaped by local context.",
-  "Listings built to feel premium and readable.",
+  "Premium listings, easy to read.",
 ] as const;
 
 export const teamMembers = [
@@ -160,27 +157,27 @@ export const teamMembers = [
     role: "Founder and principal advisor",
     focus: "Strategy, valuation, and seller representation",
     bio:
-      "Leads the team with a calm market-first approach and a bias toward clear communication.",
+      "Leads strategy with market discipline and calm communication.",
   },
   {
     name: "Mira Thapa",
     role: "Buyer advisor",
     focus: "Shortlists, tours, and neighborhood guidance",
     bio:
-      "Helps buyers compare options quickly and identify homes that are worth serious consideration.",
+      "Helps buyers compare homes and act with confidence.",
   },
   {
     name: "Aarav KC",
     role: "Listing specialist",
     focus: "Presentation, copy, and launch coordination",
     bio:
-      "Shapes each listing so it looks intentional, precise, and ready for the market.",
+      "Builds listing presentation with precision and consistency.",
   },
   {
     name: "Nisha Ghimire",
     role: "Client operations",
     focus: "Scheduling, follow-up, and deal support",
     bio:
-      "Keeps the process organized so clients always know the next step.",
+      "Keeps every transaction organized and on pace.",
   },
 ] as const;
