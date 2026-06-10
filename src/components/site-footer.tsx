@@ -28,6 +28,12 @@ export function SiteFooter() {
             Classic trust, modern execution for premium property across the
             valley.
           </p>
+          <Link
+            href="https://neupgroup.com/estate/manage"
+            className="inline-flex text-sm font-semibold text-[color:var(--muted)] transition-colors hover:text-[color:var(--foreground)]"
+          >
+            Management panel
+          </Link>
         </div>
 
         <div>
