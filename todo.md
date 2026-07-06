@@ -9,4 +9,3 @@
 - [ ] Add Neup documentation for `src/components/property-card.tsx`.
 - [ ] Add Neup documentation for `src/components/property-feed.tsx`.
 - [ ] Add Neup documentation for `src/components/site-footer.tsx`.
-- [ ] Add Neup documentation for `src/components/site-header.tsx`.
