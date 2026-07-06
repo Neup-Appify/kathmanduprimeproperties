@@ -1,3 +1,22 @@
+/*
+::neup.documentation::agent-profile-page
+::function AgentProfilePage(params)
+::title Agent Profile Page
+
+::public
+
+Renders a public agent profile page using the resolved `neupId` route segment and
+shows that agent's active property feed.
+
+::param external params
+::datatype Promise<{ neupid: string }>
+
+The dynamic route params for the public agent profile page.
+
+::public end
+
+::end
+*/
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";

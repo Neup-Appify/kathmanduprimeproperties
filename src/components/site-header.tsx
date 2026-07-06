@@ -39,12 +39,20 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link
-          href="/properties"
-          className="inline-flex h-11 items-center justify-center rounded-full border border-[color:var(--primary)] bg-[color:var(--primary)] px-5 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--primary-strong)]"
-        >
-          Schedule viewing
-        </Link>
+        <div className="flex items-center gap-3">
+          <Link
+            href="/search"
+            className="inline-flex h-11 items-center justify-center rounded-full border border-[color:var(--border)] bg-[color:var(--surface-strong)] px-5 text-sm font-semibold text-[color:var(--foreground)] transition-transform duration-200 hover:-translate-y-0.5 hover:border-[color:var(--primary)] hover:text-[color:var(--primary)]"
+          >
+            Search
+          </Link>
+          <Link
+            href="/properties"
+            className="inline-flex h-11 items-center justify-center rounded-full border border-[color:var(--primary)] bg-[color:var(--primary)] px-5 text-sm font-semibold text-white transition-transform duration-200 hover:-translate-y-0.5 hover:bg-[color:var(--primary-strong)]"
+          >
+            Schedule viewing
+          </Link>
+        </div>
       </div>
     </header>
   );
