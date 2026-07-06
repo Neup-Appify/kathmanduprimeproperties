@@ -1,5 +1,6 @@
 - [ ] Add Neup documentation for `package.json` configuration.
 - [ ] Add Neup documentation for `src/app/globals.css`.
+- [ ] Add Neup documentation for `src/app/agent/[neupid]/page.tsx`.
 - [ ] Add Neup documentation for `src/app/properties/page.tsx`.
 - [ ] Add Neup documentation for `src/app/team/page.tsx`.
 - [ ] Add Neup documentation for `src/app/layout.tsx`.
