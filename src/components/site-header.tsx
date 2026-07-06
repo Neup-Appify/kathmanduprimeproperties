@@ -21,11 +21,8 @@ export function SiteHeader() {
             />
           </span>
           <span>
-            <span className="block font-display text-2xl leading-none tracking-wide text-[color:var(--foreground)]">
+            <span className="block font-display text-[1.42rem] leading-none tracking-[-0.02em] text-[color:var(--foreground)] sm:text-[1.5rem]">
               Kathmandu Prime Properties
-            </span>
-            <span className="block text-[11px] uppercase tracking-[0.28em] text-[color:var(--muted)]">
-              Estate Advisory
             </span>
           </span>
         </Link>

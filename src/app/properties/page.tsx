@@ -1,12 +1,20 @@
 import type { Metadata } from "next";
-import { featuredProperties, propertiesPageHero, sellingSteps } from "@/data/site";
+import { PropertyCard } from "@/components/property-card";
+import { getProperties } from "@/lib/properties";
+import { propertiesPageHero, sellingSteps } from "@/data/site";
 
 export const metadata: Metadata = {
   title: "Properties",
   description: "Focused property listings for the Kathmandu market.",
 };
 
-export default function PropertiesPage() {
+export default async function PropertiesPage() {
+  const properties = await getProperties();
+  const propertyCountText =
+    properties.length === 1
+      ? "1 property available right now."
+      : `${properties.length} properties available right now.`;
+
   return (
     <div className="mx-auto w-full max-w-7xl px-6 py-8 lg:px-8 lg:py-12">
       <section className="max-w-3xl space-y-4">
@@ -19,40 +27,23 @@ export default function PropertiesPage() {
         <p className="text-lg leading-8 text-[color:var(--muted)]">
           {propertiesPageHero.description}
         </p>
+        <p className="text-sm font-medium text-[color:var(--muted)]">
+          {properties.length > 0
+            ? propertyCountText
+            : "No properties are available right now."}
+        </p>
       </section>
 
       <section className="mt-12 grid gap-5 lg:grid-cols-3">
-        {featuredProperties.map((property) => (
-          <article
-            key={property.name}
-            className="overflow-hidden rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface-strong)] shadow-sm"
-          >
-            <div className="border-b border-[color:var(--border)] bg-[linear-gradient(180deg,rgba(110,31,45,0.1),rgba(255,255,255,1))] p-5">
-              <div className="inline-flex rounded-full bg-white px-3 py-1 text-xs font-semibold uppercase tracking-[0.22em] text-[color:var(--primary)]">
-                {property.type}
-              </div>
-              <h2 className="mt-4 font-display text-3xl text-[color:var(--foreground)]">
-                {property.name}
-              </h2>
-              <p className="mt-2 text-sm text-[color:var(--muted)]">
-                {property.location}
-              </p>
-            </div>
-            <div className="space-y-5 p-5">
-              <p className="text-sm leading-7 text-[color:var(--muted)]">
-                {property.description}
-              </p>
-              <div className="flex items-center justify-between gap-4">
-                <span className="font-display text-2xl text-[color:var(--foreground)]">
-                  {property.price}
-                </span>
-                <span className="rounded-full bg-[color:var(--primary-soft)] px-3 py-1 text-xs font-semibold text-[color:var(--primary)]">
-                  {property.highlight}
-                </span>
-              </div>
-            </div>
-          </article>
-        ))}
+        {properties.length > 0 ? (
+          properties.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))
+        ) : (
+          <div className="rounded-[1.1rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 text-sm text-[color:var(--muted)] lg:col-span-3">
+            Property listings could not be loaded from the upstream API.
+          </div>
+        )}
       </section>
 
       <section className="mt-16 rounded-[1.25rem] border border-[color:var(--border)] bg-[color:var(--surface)] p-6 shadow-sm lg:p-8">

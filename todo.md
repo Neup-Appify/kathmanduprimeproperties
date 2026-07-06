@@ -1,0 +1,9 @@
+- [ ] Add Neup documentation for `package.json` configuration.
+- [ ] Add Neup documentation for `src/app/globals.css`.
+- [ ] Add Neup documentation for `src/app/properties/page.tsx`.
+- [ ] Add Neup documentation for `src/app/team/page.tsx`.
+- [ ] Add Neup documentation for `src/app/layout.tsx`.
+- [ ] Add Neup documentation for `src/app/page.tsx`.
+- [ ] Add Neup documentation for `src/components/property-card.tsx`.
+- [ ] Add Neup documentation for `src/components/property-feed.tsx`.
+- [ ] Add Neup documentation for `src/components/site-header.tsx`.

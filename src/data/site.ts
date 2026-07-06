@@ -43,36 +43,6 @@ export const homeServices = [
   },
 ] as const;
 
-export const featuredProperties = [
-  {
-    name: "Lazimpat skyline residence",
-    location: "Lazimpat, Kathmandu",
-    type: "Luxury apartment",
-    price: "Rs 4.8 Cr",
-    highlight: "City-facing balcony",
-    description:
-      "Three-bedroom residence with refined finishes and central access.",
-  },
-  {
-    name: "Buddhanagar family villa",
-    location: "Buddhanagar, Kathmandu",
-    type: "Independent villa",
-    price: "Rs 7.2 Cr",
-    highlight: "Private garden",
-    description:
-      "Spacious villa balancing privacy, daylight, and city convenience.",
-  },
-  {
-    name: "Jhamsikhel investor flat",
-    location: "Jhamsikhel, Lalitpur",
-    type: "Urban apartment",
-    price: "Rs 3.1 Cr",
-    highlight: "High rental demand",
-    description:
-      "Compact investment flat with strong rental and lifestyle appeal.",
-  },
-] as const;
-
 export const sellingSteps = [
   {
     title: "Discover",
