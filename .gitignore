@@ -39,3 +39,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# certificates by next js
+certificates
+
+# neup standard files
+core
+neup.core
+logica
+neup.logica
