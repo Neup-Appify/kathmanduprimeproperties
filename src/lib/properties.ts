@@ -5,7 +5,7 @@
 
 ::public
 
-Fetches the public property feed for the site from the Neup Estate bridge and
+Fetches the public property feed through the Logica estate object API and
 normalizes each entry into the website listing shape.
 
 ::returns
@@ -18,18 +18,16 @@ properties pages.
 
 ::private
 
-The bridge contract uses `agency_id` on `/property/list`. The implementation
-also accepts legacy `PROPERTIES_ACCOUNT_ID` environment configuration as a
-fallback source for the agency identifier.
+The Logica estate object is scoped by agency id. The implementation also accepts
+legacy `PROPERTIES_ACCOUNT_ID` environment configuration as a fallback source
+for the agency identifier.
 
 ::private end
 
 ::end
 */
-const DEFAULT_PROPERTIES_API_URL =
-  "https://neupgroup.com/estate/bridge/api.v1/property/list";
-const DEFAULT_ACCOUNT_LOOKUP_API_URL =
-  "https://neupgroup.com/estate/bridge/api.v1/accounts/lookup";
+import { logica } from "@/logica";
+
 const DEFAULT_AGENCY_ID = "2a1511da-1092-4c1a-bb4a-973c301d2670";
 
 export type PropertyApiAgency = {
@@ -55,27 +53,12 @@ export type PropertyApiItem = {
   updatedAt?: string;
 };
 
-export type PropertyApiResponse = {
-  success?: boolean;
-  properties?: PropertyApiItem[];
-  totalCount?: number;
-  limit?: number;
-  offset?: number;
-  fields?: string[];
-};
-
 export type AccountLookupRecord = {
   accountId?: string;
   displayName?: string;
   displayImage?: string;
   accountType?: string;
   neupId?: string;
-};
-
-export type AccountLookupResponse = {
-  success?: boolean;
-  hasDisplayName?: boolean;
-  account?: AccountLookupRecord;
 };
 
 export type PropertyListing = {
@@ -111,33 +94,14 @@ export type AgentProfile = {
 };
 
 type AccountDirectory = Map<string, AccountLookupRecord>;
+type AccountDirectoryEntry = readonly [string, AccountLookupRecord];
 
-function getPropertiesApiUrl() {
-  const baseUrl = process.env.PROPERTIES_API_URL ?? DEFAULT_PROPERTIES_API_URL;
-  const agencyId =
+function getPropertiesAgencyId() {
+  return (
     process.env.PROPERTIES_AGENCY_ID ??
     process.env.PROPERTIES_ACCOUNT_ID ??
-    DEFAULT_AGENCY_ID;
-  const url = new URL(baseUrl);
-
-  if (!url.searchParams.has("agency_id")) {
-    url.searchParams.set("agency_id", agencyId);
-  }
-
-  url.searchParams.delete("account_id");
-
-  return url.toString();
-}
-
-function getAccountLookupApiUrl(accountId: string) {
-  const url = new URL(
-    process.env.PROPERTIES_ACCOUNT_LOOKUP_API_URL ??
-      DEFAULT_ACCOUNT_LOOKUP_API_URL,
+    DEFAULT_AGENCY_ID
   );
-
-  url.searchParams.set("accountId", accountId);
-
-  return url.toString();
 }
 
 function formatPrice(priceValue: number | null) {
@@ -148,6 +112,60 @@ function formatPrice(priceValue: number | null) {
   return `Rs ${new Intl.NumberFormat("en-IN", {
     maximumFractionDigits: 0,
   }).format(priceValue)}`;
+}
+
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
+function getString(value: unknown): string | undefined {
+  return typeof value === "string" ? value : undefined;
+}
+
+function getStringArray(value: unknown): string[] | undefined {
+  if (!Array.isArray(value)) {
+    return undefined;
+  }
+
+  return value.filter((item): item is string => typeof item === "string");
+}
+
+function normalizeApiAgency(value: unknown): PropertyApiAgency | undefined {
+  if (!isRecord(value)) {
+    return undefined;
+  }
+
+  return {
+    id: getString(value.id),
+    name: getString(value.name),
+    logoUrl: getString(value.logoUrl),
+  };
+}
+
+function normalizeApiItem(value: unknown): PropertyApiItem | null {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  return {
+    id: getString(value.id),
+    slug: getString(value.slug),
+    title: getString(value.title),
+    price:
+      typeof value.price === "number" || typeof value.price === "string"
+        ? value.price
+        : undefined,
+    location: getString(value.location),
+    purpose: getString(value.purpose),
+    category: getString(value.category),
+    type: getString(value.type),
+    images: getStringArray(value.images),
+    agency: normalizeApiAgency(value.agency),
+    listingAgent: getString(value.listingAgent),
+    status: getString(value.status),
+    createdAt: getString(value.createdAt),
+    updatedAt: getString(value.updatedAt),
+  };
 }
 
 async function getAccountDirectory(
@@ -163,26 +181,31 @@ async function getAccountDirectory(
     ),
   );
 
-  const accountEntries = await Promise.all(
+  const accountEntries: (AccountDirectoryEntry | null)[] = await Promise.all(
     accountIds.map(async (accountId) => {
       try {
-        const response = await fetch(getAccountLookupApiUrl(accountId), {
-          next: {
-            revalidate: 300,
+        const response = await logica.account.lookup.byId(accountId).get([
+          "neupid",
+          "displayName",
+          "accountId",
+          "displayImage",
+          "accountType",
+        ]);
+
+        if (!response.ok || !response.body.success || !response.body.accountId) {
+          return null;
+        }
+
+        return [
+          response.body.accountId,
+          {
+            accountId: response.body.accountId,
+            displayName: response.body.displayName ?? undefined,
+            displayImage: response.body.displayImage ?? undefined,
+            accountType: response.body.accountType ?? undefined,
+            neupId: response.body.neupid ?? undefined,
           },
-        });
-
-        if (!response.ok) {
-          return null;
-        }
-
-        const data = (await response.json()) as AccountLookupResponse;
-
-        if (!data.success || !data.account?.accountId) {
-          return null;
-        }
-
-        return [data.account.accountId, data.account] as const;
+        ] satisfies AccountDirectoryEntry;
       } catch {
         return null;
       }
@@ -191,7 +214,7 @@ async function getAccountDirectory(
 
   return new Map(
     accountEntries.filter(
-      (entry): entry is readonly [string, AccountLookupRecord] => Boolean(entry),
+      (entry): entry is AccountDirectoryEntry => Boolean(entry),
     ),
   );
 }
@@ -257,25 +280,20 @@ function normalizeProperty(
 
 export async function getProperties(): Promise<PropertyListing[]> {
   try {
-    const response = await fetch(getPropertiesApiUrl(), {
-      next: {
-        revalidate: 300,
-      },
-    });
+    const response = await logica.estate
+      .agency(getPropertiesAgencyId())
+      .property.list();
+    const properties = response.body.properties
+      .map((item) => normalizeApiItem(item))
+      .filter((item): item is PropertyApiItem => Boolean(item));
 
-    if (!response.ok) {
+    if (!response.ok || !response.body.success) {
       return [];
     }
 
-    const data = (await response.json()) as PropertyApiResponse;
+    const accountDirectory = await getAccountDirectory(properties);
 
-    if (!data.success || !Array.isArray(data.properties)) {
-      return [];
-    }
-
-    const accountDirectory = await getAccountDirectory(data.properties);
-
-    return data.properties
+    return properties
       .map((item) => normalizeProperty(item, accountDirectory))
       .filter((item): item is PropertyListing => Boolean(item));
   } catch {

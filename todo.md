@@ -9,3 +9,5 @@
 - [ ] Add Neup documentation for `src/components/property-card.tsx`.
 - [ ] Add Neup documentation for `src/components/property-feed.tsx`.
 - [ ] Add Neup documentation for `src/components/site-footer.tsx`.
+- [ ] Review and resolve the 5 high severity vulnerabilities reported by `npm install`.
+- [ ] Fix existing lint errors in `core/*` so `npm run lint` passes.
